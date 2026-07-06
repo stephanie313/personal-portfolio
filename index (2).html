@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaofei Wu — Electrical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF9F6;
+    --panel: #FFFFFF;
+    --shadow: 0 4px 18px rgba(20,19,15,0.05);
+    --ink: #14130F;
+    --muted: #6E6A61;
+    --accent: #D6491D;
+    --line: #DEDACF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; font-size:16px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600;}
+  a{color:inherit;}
+  ::selection{background:var(--accent); color:#fff;}
+
+  .wrap{max-width:840px; margin:0 auto; padding:0 32px;}
+
+  nav{padding:30px 0;}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:19px;}
+  .nav-links{display:flex; gap:28px; font-size:14px;}
+  .nav-links a{text-decoration:none; color:var(--muted); transition:color .2s;}
+  .nav-links a:hover{color:var(--accent);}
+
+  /* HERO */
+  .hero{padding:64px 0 90px;}
+  .hero .kicker{font-size:13.5px; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:22px;}
+  .hero h1{font-size:clamp(34px, 6vw, 58px); line-height:0.98; letter-spacing:-0.01em; margin-bottom:28px;}
+  .hero h1 em{font-style:italic; color:var(--accent);}
+  .hero .dek{font-size:19px; color:var(--muted); max-width:560px;}
+  .hero .dek strong{color:var(--ink); font-weight:600;}
+  .hero .loc{margin-top:26px; font-size:13.5px; color:var(--muted);}
+
+  /* SECTIONS with big index numbers */
+  section{padding:40px 0; border-top:1px solid var(--line);}
+  h2.sec-title{font-size:28px; margin-bottom:22px;}
+  .lede{color:var(--muted); font-size:16.5px; max-width:600px;}
+  .lede strong{color:var(--ink); font-weight:500;}
+  .lede + .lede{margin-top:14px;}
+
+  /* PROJECTS */
+  .proj{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:26px 28px; margin-bottom:18px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .proj:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .proj:last-child{margin-bottom:0;}
+  .proj-meta{margin-bottom:10px;}
+  .proj-meta .year{font-size:13px; color:var(--accent); font-weight:600; letter-spacing:0.04em;}
+  .proj-meta .venue{font-size:13px; color:var(--muted); margin-left:10px;}
+  .proj h3{font-size:21px; margin-bottom:12px;}
+  .proj p{color:var(--muted); font-size:15px; max-width:640px;}
+  .proj .stack{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .proj .stack span{font-size:12px; color:var(--muted); border:1px solid var(--line); padding:4px 11px; border-radius:20px;}
+
+  /* EXPERIENCE */
+  .job{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:24px 28px; margin-bottom:18px;
+    display:grid; grid-template-columns:1fr auto; gap:12px; align-items:baseline;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .job:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .job:last-child{margin-bottom:0;}
+  .job h3{font-size:19px;}
+  .job .org{color:var(--muted); font-size:14px; margin-top:2px;}
+  .job .when{font-size:13px; color:var(--muted); white-space:nowrap;}
+  .job ul{grid-column:1 / -1; margin-top:10px; padding-left:18px; color:var(--muted); font-size:14.5px; display:flex; flex-direction:column; gap:5px;}
+
+  /* SKILLS */
+  .skill-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;}
+  .skill-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:20px 22px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .skill-card:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .skill-card .k{font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); font-weight:600; margin-bottom:8px;}
+  .skill-card .v{color:var(--muted); font-size:15px;}
+
+  /* EDUCATION */
+  .edu{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:22px 26px; margin-bottom:16px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .edu:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .edu-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;}
+  .edu h3{font-size:19px;}
+  .edu .when{font-size:13px; color:var(--muted);}
+  .edu .deg{color:var(--muted); font-size:14.5px; margin-top:4px;}
+
+  .ach-list{margin-top:30px;}
+  .ach{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); display:flex; gap:16px; padding:20px 22px; margin-bottom:14px;
+    align-items:flex-start; transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .ach:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .ach:last-child{margin-bottom:0;}
+
+  .ach .rank{font-family:'Fraunces', serif; color:var(--accent); font-size:19px; min-width:40px;}
+  .ach .desc{color:var(--muted); font-size:14.5px;}
+  .ach .desc strong{color:var(--ink); font-weight:500;}
+
+  /* CONTACT */
+  footer{padding:80px 0 90px; border-top:1px solid var(--line);}
+  footer h2{font-size:clamp(34px, 6vw, 52px); margin-bottom:20px; line-height:1.05;}
+  footer .dek{color:var(--muted); font-size:17px; max-width:460px; margin-bottom:34px;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:24px;}
+  .contact-links a{font-size:15px; text-decoration:none; border-bottom:1.5px solid var(--ink); padding-bottom:3px; transition:border-color .2s, color .2s;}
+  .contact-links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  @media (max-width:640px){
+    .job{grid-template-columns:1fr;}
+    .skill-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Yaofei Wu</span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Electrical Engineering · Georgia Tech</div>
+    <h1>Yaofei Wu.</h1>
+    <p class="dek">
+      I'm an Electrical Engineering student focused on <strong>circuit technology</strong>,
+      working toward Hardware Design and Field Applications Engineering roles.
+    </p>
+    <div class="loc">Atlanta, GA</div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec-title">About</h2>
+      <p class="lede">
+        My interests focus on circuit technology and integrated circuit design, particularly the
+        physical and electrical foundations of hardware systems. I am interested in areas such as
+        semiconductor device physics, digital system architecture, and physical silicon layout.
+        Through projects involving AI workflows and data processing pipelines, I have developed
+        experience building and debugging multi-component systems. These experiences have
+        strengthened my interest in moving toward hardware-focused engineering, particularly
+        Hardware Design and Field Applications Engineering roles.
+      </p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="sec-title">Projects</h2>
+
+      <div class="proj">
+        <div class="proj-meta"><span class="year">2026</span><span class="venue">GatorHacks 2026 — 2nd Place</span></div>
+        <h3>Public Health Dashboard Map · SDOH Advocate</h3>
+        <p>Built a Python data pipeline (pandas, numpy) ingesting and cleaning ~30,000 U.S. ZIP code records, then implemented K-Means clustering to group zones into four equity tiers from health and socio-economic metrics. Programmed an interactive map with dynamic snapshots and localized data filtering, alongside a dashboard visualizing clustering convergence and performance.</p>
+        <div class="stack"><span>Python</span><span>pandas</span><span>K-Means</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-meta"><span class="year">2025–26</span><span class="venue">AI Club AI Team</span></div>
+        <h3>Gator Guide — Course Matching System</h3>
+        <p>Built a semantic course-matching pipeline with BGE embeddings and cosine similarity, reaching 0.85 similarity for equivalent courses. Improved matching accuracy from 0.53 to 0.73 by integrating KeyBERT keyword extraction, and implemented a human-in-the-loop feedback system to tune similarity thresholds.</p>
+        <div class="stack"><span>BGE Embeddings</span><span>KeyBERT</span><span>Cosine Similarity</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-meta"><span class="year">2026</span><span class="venue">HackSU 2026 — 24 hrs</span></div>
+        <h3>Career Exploration Platform</h3>
+        <p>Built end to end in a 24-hour hackathon window — a platform for exploring engineering career paths.</p>
+        <div class="stack"><span>Hackathon</span><span>Full Stack</span></div>
+      </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2 class="sec-title">Experience</h2>
+
+      <div class="job">
+        <div>
+          <h3>AI Workflow Automation Extern</h3>
+          <div class="org">Outamation — Remote</div>
+        </div>
+        <div class="when">Aug 2025 – Nov 2025</div>
+        <ul>
+          <li>Developed an AI-powered RAG pipeline using Python, OCR, embeddings, and FAISS</li>
+          <li>Improved retrieval accuracy by comparing models and refining pipeline components</li>
+          <li>Built a chatbot interface and documented system behavior</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div>
+          <h3>Biology Lab Assistant</h3>
+          <div class="org">Green River College Biology Department — Auburn, WA</div>
+        </div>
+        <div class="when">Sep 2025 – Jun 2026</div>
+        <ul>
+          <li>Set up experimental materials and managed lab equipment inventory across multiple course sections</li>
+        </ul>
+      </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="sec-title">Skills</h2>
+      <div class="skill-grid">
+        <div class="skill-card"><div class="k">Programming</div><div class="v">Python, Java, C</div></div>
+        <div class="skill-card"><div class="k">Tools</div><div class="v">Autodesk Fusion 360, Git, GitHub, Jupyter Notebook, Google Colab, KeyBERT</div></div>
+        <div class="skill-card"><div class="k">Concepts</div><div class="v">Data pipelines, embeddings, RAG, circuit analysis, fault diagnosis, multimeters</div></div>
+        <div class="skill-card"><div class="k">Languages</div><div class="v">Mandarin, English</div></div>
+      </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="sec-title">Education &amp; achievements</h2>
+
+      <div class="edu">
+        <div class="edu-top">
+          <h3>Georgia Institute of Technology</h3>
+          <span class="when">Incoming Fall 2026 · Expected May 2028</span>
+        </div>
+        <div class="deg">B.S. Electrical Engineering — Circuit Technology focus</div>
+      </div>
+
+      <div class="edu">
+        <div class="edu-top">
+          <h3>Green River College</h3>
+          <span class="when">4.00 GPA · Jun 2026</span>
+        </div>
+        <div class="deg">A.S.-T, Computer/Electrical Engineering — Calculus, Engineering Physics, Java, Discrete Math</div>
+      </div>
+
+      <div class="ach-list">
+        <div class="ach">
+          <div class="rank">2nd</div>
+          <div class="desc"><strong>GatorHacks 2026</strong> — Auburn, WA · SDOH Advocate, a ZIP-code-level health equity dashboard clustering ~30,000 U.S. ZIP codes into equity tiers</div>
+        </div>
+        <div class="ach">
+          <div class="rank">1st</div>
+          <div class="desc"><strong>GatorHacks 2025</strong> — Auburn, WA · first place overall, improving a convolutional neural network (CNN) pipeline for blood cancer cell image classification</div>
+        </div>
+        <div class="ach">
+          <div class="rank">5th</div>
+          <div class="desc"><strong>PSPC</strong> (Puget Sound Programming Competition) — University of Washington Tacoma · 5th place overall, 1st institutional, in a coding competition</div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch.</h2>
+    <p class="dek">Open to Hardware Design and Field Applications Engineering conversations, internships, and collaborations at the hardware/software boundary.</p>
+    <div class="contact-links">
+      <a href="mailto:yaofeiwu.job@gmail.com">Email</a>
+      <a href="https://github.com/stephanie313" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/yao-fei-wu-b80bb5345" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
