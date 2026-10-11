@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaofei Wu | Electrical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF9F6;
+    --panel: #FFFFFF;
+    --shadow: 0 4px 18px rgba(20,19,15,0.05);
+    --ink: #14130F;
+    --muted: #6E6A61;
+    --accent: #D6491D;
+    --line: #DEDACF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; font-size:16px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600;}
+  a{color:inherit;}
+  ::selection{background:var(--accent); color:#fff;}
+
+  .wrap{max-width:840px; margin:0 auto; padding:0 32px;}
+
+  nav{padding:30px 0;}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:19px;}
+  .nav-links{display:flex; flex-wrap:wrap; gap:8px 24px; font-size:14px;}
+  .nav-links a{text-decoration:none; color:var(--muted); transition:color .2s;}
+  .nav-links a:hover{color:var(--accent);}
+
+  /* HERO */
+  .hero{padding:56px 0 70px;}
+  .hero .kicker{font-size:13.5px; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:22px;}
+  .hero h1{font-size:clamp(34px, 6vw, 58px); line-height:0.98; letter-spacing:-0.01em; margin-bottom:24px;}
+  .hero .dek{font-size:19px; color:var(--muted); max-width:580px;}
+  .hero .dek strong{color:var(--ink); font-weight:600;}
+  .hero .loc{margin-top:22px; font-size:13.5px; color:var(--muted);}
+  .hero-links{margin-top:26px; display:flex; flex-wrap:wrap; gap:10px;}
+  .hero-links a{
+    font-size:14px; text-decoration:none; padding:8px 18px; border-radius:20px;
+    border:1.5px solid var(--ink); transition:background .2s, color .2s, border-color .2s;
+  }
+  .hero-links a:hover{border-color:var(--accent); color:var(--accent);}
+  .hero-links a.primary{background:var(--ink); color:var(--bg);}
+  .hero-links a.primary:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+
+  /* SECTIONS */
+  section{padding:40px 0; border-top:1px solid var(--line);}
+  h2.sec-title{font-size:28px; margin-bottom:22px;}
+  .sub-label{font-size:13px; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); font-weight:600; margin:30px 0 14px;}
+  .lede{color:var(--muted); font-size:16.5px; max-width:620px;}
+  .lede strong{color:var(--ink); font-weight:500;}
+  .lede + .lede{margin-top:14px;}
+
+  /* PROJECTS */
+  .proj{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:26px 28px; margin-bottom:18px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .proj:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .proj:last-child{margin-bottom:0;}
+  .proj-meta{margin-bottom:10px;}
+  .proj-meta .year{font-size:13px; color:var(--accent); font-weight:600; letter-spacing:0.04em;}
+  .proj-meta .venue{font-size:13px; color:var(--muted); margin-left:10px;}
+  .proj h3{font-size:21px; margin-bottom:12px;}
+  .proj ul{padding-left:18px; color:var(--muted); font-size:15px; display:flex; flex-direction:column; gap:6px; max-width:640px;}
+  .proj .stack{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .proj .stack span{font-size:12px; color:var(--muted); border:1px solid var(--line); padding:4px 11px; border-radius:20px;}
+
+  /* EXPERIENCE */
+  .job{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:24px 28px; margin-bottom:18px;
+    display:grid; grid-template-columns:1fr auto; gap:12px; align-items:baseline;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .job:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .job:last-child{margin-bottom:0;}
+  .job h3{font-size:19px;}
+  .job .org{color:var(--muted); font-size:14px; margin-top:2px;}
+  .job .when{font-size:13px; color:var(--muted); white-space:nowrap;}
+  .job ul{grid-column:1 / -1; margin-top:10px; padding-left:18px; color:var(--muted); font-size:14.5px; display:flex; flex-direction:column; gap:5px;}
+
+  /* SKILLS */
+  .skill-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;}
+  .skill-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:20px 22px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .skill-card:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .skill-card .k{font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); font-weight:600; margin-bottom:8px;}
+  .skill-card .v{color:var(--muted); font-size:15px;}
+
+  /* EDUCATION */
+  .edu{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:22px 26px; margin-bottom:16px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .edu:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .edu-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;}
+  .edu h3{font-size:19px;}
+  .edu .when{font-size:13px; color:var(--muted);}
+  .edu .deg{color:var(--muted); font-size:14.5px; margin-top:4px;}
+  .edu .note{color:var(--muted); font-size:13.5px; margin-top:8px;}
+
+  .ach{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); display:flex; gap:16px; padding:20px 22px; margin-bottom:14px;
+    align-items:flex-start; transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .ach:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,19,15,0.09);}
+  .ach:last-child{margin-bottom:0;}
+  .ach .rank{font-family:'Fraunces', serif; color:var(--accent); font-size:19px; min-width:40px;}
+  .ach .desc{color:var(--muted); font-size:14.5px;}
+  .ach .desc strong{color:var(--ink); font-weight:500;}
+
+  /* CONTACT */
+  footer{padding:70px 0 90px; border-top:1px solid var(--line);}
+  footer h2{font-size:clamp(34px, 6vw, 52px); margin-bottom:20px; line-height:1.05;}
+  footer .dek{color:var(--muted); font-size:17px; max-width:480px; margin-bottom:34px;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:24px;}
+  .contact-links a{font-size:15px; text-decoration:none; border-bottom:1.5px solid var(--ink); padding-bottom:3px; transition:border-color .2s, color .2s;}
+  .contact-links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  @media (max-width:640px){
+    .job{grid-template-columns:1fr;}
+    .skill-grid{grid-template-columns:1fr;}
+    .wrap{padding:0 22px;}
+    .proj, .job{padding:22px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Yaofei Wu</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Electrical Engineering · Georgia Tech</div>
+    <h1>Yaofei Wu.</h1>
+    <p class="dek">
+      Electrical Engineering student at Georgia Tech concentrating in <strong>Circuit Technology</strong>
+      and <strong>Signal Processing</strong>. Interested in digital logic design, computer architecture,
+      and hardware validation.
+    </p>
+    <div class="loc">Atlanta, GA</div>
+    <div class="hero-links">
+      <a class="primary" href="https://drive.google.com/file/d/1FGBKa0gEVN3tsilXg0IhdUyK7iM6Y9tZ/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="https://www.linkedin.com/in/yaofeiwu" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:yaofeiwu.job@gmail.com">Email</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec-title">About</h2>
+    <p class="lede">
+      I am an Electrical Engineering junior at Georgia Tech concentrating in Circuit Technology and
+      Signal Processing. Currently, I am building my foundations in circuit systems, digital logic
+      design, and signal analysis.
+    </p>
+    <p class="lede">
+      I am particularly interested in digital system architecture, board-level hardware design, and
+      hardware validation. Through hands-on work with Altium PCB layout on the Automotive LiDAR team
+      and mechanical prototyping at NTU, I have developed a strong interest in physical prototyping
+      and systematic design verification. I am looking forward to expanding this foundation through
+      undergraduate research and upcoming internships in digital design, integrated circuit (IC)
+      development, and hardware engineering.
+    </p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2 class="sec-title">Experience</h2>
+
+    <div class="job">
+      <div>
+        <h3>Undergraduate Researcher, Automotive LiDAR Team (Electronics Subteam)</h3>
+        <div class="org">Georgia Tech Vertically Integrated Projects (VIP) · Atlanta, GA</div>
+      </div>
+      <div class="when">Aug 2026 – Present</div>
+      <ul>
+        <li>Captured circuit schematics and completed PCB layout, placement, and trace routing in Altium Designer</li>
+        <li>Validated board netlists against design rule check clearance constraints in preparation for hardware bench testing</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div>
+        <h3>Summer Research Assistant</h3>
+        <div class="org">National Taiwan University, NASA Lab · Taipei, Taiwan</div>
+      </div>
+      <div class="when">Jun 2026 – Aug 2026</div>
+      <ul>
+        <li>Designed custom camera mounts in Autodesk Fusion 360, adjusting dimensional sizing to securely attach the camera onto the robot's metal support rod using 3D printing</li>
+        <li>Implemented Python scripts using OpenCV to stream, manipulate, and dynamically rotate live optical camera feeds for real-time surgical monitoring displays</li>
+        <li>Shadowed graduate mentors during live robotic system demonstrations and Optical Coherence Tomography (OCT) scanning sessions to observe system-level hardware integration</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div>
+        <h3>AI Workflow Automation Extern</h3>
+        <div class="org">Outamation · Remote</div>
+      </div>
+      <div class="when">Aug 2025 – Nov 2025</div>
+      <ul>
+        <li>Developed an AI-powered RAG pipeline using Python, OCR, embeddings, and FAISS to process and retrieve documents</li>
+        <li>Evaluated model retrieval performance to improve accuracy and built an interactive chatbot interface for query outputs</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div>
+        <h3>Biology Laboratory Assistant</h3>
+        <div class="org">Green River College Biology Department · Auburn, WA</div>
+      </div>
+      <div class="when">Sep 2025 – Jun 2026</div>
+      <ul>
+        <li>Prepared chemical solutions and experimental materials for biology courses, organized stockroom inventory, and maintained laboratory equipment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="sec-title">Projects</h2>
+    <!-- RISC-V processor (SiliconJackets) goes at the top of this list once onboarding is done -->
+
+    <div class="proj">
+      <div class="proj-meta"><span class="year">2026</span><span class="venue">GatorHacks 2026 · 2nd Place Overall</span></div>
+      <h3>Public Health Dashboard Map · SDOH Advocate</h3>
+      <ul>
+        <li>Ingested and parsed a 30,000-point U.S. geospatial health metric dataset using Python (Pandas, NumPy)</li>
+        <li>Developed an interactive map interface to display localized data markers and visually filter coordinates</li>
+        <li>Implemented a K-Means clustering algorithm to group geographic zones into four distinct equity tiers based on health and socio-economic vectors</li>
+      </ul>
+      <div class="stack"><span>Python</span><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>Data Analysis</span><span>Cursor</span></div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-meta"><span class="year">2025–26</span><span class="venue">AI Club AI Team</span></div>
+      <h3>Gator Guide: Course Matching System</h3>
+      <ul>
+        <li>Built a semantic course-matching pipeline using BGE sentence embeddings and cosine similarity, achieving 0.85 similarity scores across university course descriptions</li>
+        <li>Integrated keyword extraction to improve syllabus text normalization accuracy from 0.53 to 0.73 across inconsistent formats</li>
+      </ul>
+      <div class="stack"><span>Python</span><span>Embeddings</span><span>NLP</span><span>Data Processing</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="sec-title">Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card"><div class="k">Hardware &amp; Lab Tools</div><div class="v">Altium Designer (ECAD), Autodesk Fusion 360 (CAD), 3D Printing, Digital Multimeters, Bench Oscilloscopes, LTspice, Breadboard Prototyping</div></div>
+      <div class="skill-card"><div class="k">Hardware Description &amp; Logic</div><div class="v">SystemVerilog, Verilog (HDL), Digital Logic Design</div></div>
+      <div class="skill-card"><div class="k">Programming &amp; Scripting</div><div class="v">Python (Pandas, NumPy, OpenCV), C, Java, MATLAB, Git, GitHub, Linux</div></div>
+      <div class="skill-card"><div class="k">Languages</div><div class="v">English (Fluent), Mandarin (Native)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="sec-title">Education &amp; Activities</h2>
+
+    <div class="edu">
+      <div class="edu-top">
+        <h3>Georgia Institute of Technology</h3>
+        <span class="when">Expected May 2028</span>
+      </div>
+      <div class="deg">Bachelor of Science, Electrical Engineering · Focus Areas: Circuit Technology, Signal &amp; Information Processing</div>
+      <div class="note">In-progress coursework: Digital System Design, Intro to Signal Processing</div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-top">
+        <h3>Green River College</h3>
+        <span class="when">Completed Jun 2026</span>
+      </div>
+      <div class="deg">Associate in Science (AS-T), Computer/Electrical Engineering · GPA 4.00 / 4.00</div>
+    </div>
+
+    <div class="sub-label">Involvement</div>
+    <div class="edu">
+      <div class="edu-top">
+        <h3>AI Club Vice President</h3>
+        <span class="when">May 2025 – Jun 2026</span>
+      </div>
+      <div class="deg">Co-organized campus hackathons (GatorHacks) and technical workshops</div>
+    </div>
+    <div class="edu">
+      <div class="edu-top">
+        <h3>Women in Tech Club Co-President &amp; Event Coordinator</h3>
+        <span class="when">Jun 2025 – Jun 2026</span>
+      </div>
+      <div class="deg">Auburn, WA</div>
+      <div class="note">Organized technical workshops and campus events to help women in STEM build practical engineering and technical skills</div>
+    </div>
+
+    <div class="sub-label">Achievements</div>
+    <div class="ach">
+      <div class="rank">2nd</div>
+      <div class="desc"><strong>GatorHacks 2026</strong> · Auburn, WA. SDOH Advocate, a ZIP-code-level health equity dashboard clustering ~30,000 U.S. ZIP codes into equity tiers</div>
+    </div>
+    <div class="ach">
+      <div class="rank">1st</div>
+      <div class="desc"><strong>GatorHacks 2025</strong> · Auburn, WA. First place overall, improving a convolutional neural network (CNN) pipeline for blood cancer cell image classification</div>
+    </div>
+    <div class="ach">
+      <div class="rank">5th</div>
+      <div class="desc"><strong>PSPC</strong> (Puget Sound Programming Competition) · University of Washington Tacoma. 5th place overall, 1st institutional, in a coding competition</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch.</h2>
+    <p class="dek">Open to conversations regarding hardware prototyping, digital systems, and upcoming internship opportunities.</p>
+    <div class="contact-links">
+      <a href="mailto:yaofeiwu.job@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/yaofeiwu" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/stephanie313" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://drive.google.com/file/d/1FGBKa0gEVN3tsilXg0IhdUyK7iM6Y9tZ/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
